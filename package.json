@@ -1,6 +1,6 @@
 {
   "homepage": "https://Operating-System.github.io/Process-Scheduling",
-  "name": "scheduling-app",
+  "name": "cheduling-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -25,7 +25,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "spare -d build"
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -49,7 +49,6 @@
     "autoprefixer": "^10.4.20",
     "gh-pages": "^6.2.0",
     "postcss": "^8.4.47",
-    "spare": "^0.2.0",
     "tailwindcss": "^3.4.14"
   }
 }
