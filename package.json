@@ -1,6 +1,6 @@
 {
   "homepage": "https://Operating-System.github.io/Process-Scheduling",
-  "name": "cheduling-app",
+  "name": "scheduling-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
