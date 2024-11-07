@@ -1,61 +1,62 @@
-// src/algorithms/hrrn.js
-
-function calculateResponseRatio(currentTime, arrivalTime, burstTime) {
-    const waitingTime = currentTime - arrivalTime;
-    return (waitingTime + burstTime) / burstTime;
-  }
-  
-  export function hrrnScheduling(arrivalTimes, burstTimes) {
-    const n = arrivalTimes.length;
-    const completed = Array(n).fill(false);
-    const processes = [];
-    const ganttChartInfo = [];
-    let currentTime = 0;
-  
-    const jobs = arrivalTimes.map((at, i) => ({
-      job: i + 1,
+export const hrrnScheduling = (arrivalTime, burstTime) => {
+  const processesInfo = arrivalTime.map((at, index) => ({
+      job: `P${index + 1}`,
       at,
-      bt: burstTimes[i]
-    }));
-  
-    while (completed.some(status => !status)) {
-      const hrrnList = jobs
-        .map((process, i) => ({
-          index: i,
-          responseRatio: calculateResponseRatio(currentTime, process.at, process.bt)
-        }))
-        .filter(({ index }) => jobs[index].at <= currentTime && !completed[index]);
-  
-      if (hrrnList.length === 0) {
-        currentTime += 1;
-        continue;
+      bt: burstTime[index],
+  }));
+
+  console.log("Processes Info:", processesInfo); // เพิ่มตรงนี้
+
+  const solvedProcessesInfo = [];
+  const ganttChartInfo = [];
+  const remainingProcesses = [...processesInfo];
+  let currentTime = 0;
+
+  while (remainingProcesses.length > 0) {
+      let highestResponseRatio = -1;
+      let selectedIndex = -1;
+
+      for (let i = 0; i < remainingProcesses.length; i++) {
+          const process = remainingProcesses[i];
+          const waitingTime = currentTime - process.at;
+          const responseRatio = (waitingTime + process.bt) / process.bt;
+
+          if (process.at <= currentTime && responseRatio > highestResponseRatio) {
+              highestResponseRatio = responseRatio;
+              selectedIndex = i;
+          }
       }
-  
-      const { index: processIndex } = hrrnList.reduce((max, current) =>
-        current.responseRatio > max.responseRatio ? current : max
-      );
-  
-      const process = jobs[processIndex];
-      const start = currentTime;
-      const stop = parseFloat((currentTime + process.bt).toFixed(3));
-  
-      ganttChartInfo.push({ job: process.job, start, stop });
-  
-      const tat = parseFloat((stop - process.at).toFixed(3));
-      const wt = parseFloat((tat - process.bt).toFixed(3));
-  
-      processes.push({
-        job: process.job,
-        arrivalTime: process.at,
-        burstTime: process.bt,
-        completionTime: stop,
-        turnaroundTime: tat,
-        waitingTime: wt
+
+      if (selectedIndex === -1) {
+          currentTime++;
+          continue;
+      }
+
+      const process = remainingProcesses[selectedIndex];
+      const startTime = currentTime;
+      currentTime += process.bt;
+      const finishTime = currentTime;
+
+      ganttChartInfo.push({
+          job: process.job,
+          start: startTime,
+          stop: finishTime,
       });
-  
-      completed[processIndex] = true;
-      currentTime = stop;
-    }
-  
-    return { processes, ganttChartInfo };
-  }  
+
+      solvedProcessesInfo.push({
+          ...process,
+          ft: finishTime,
+          tat: finishTime - process.at,
+          wat: finishTime - process.at - process.bt,
+      });
+
+      remainingProcesses.splice(selectedIndex, 1);
+  }
+
+  return {
+      processes: solvedProcessesInfo,
+      ganttChartInfo,
+  };
+};
+
+export default hrrnScheduling;

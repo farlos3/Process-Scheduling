@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import './App.css';
 import { fcfsScheduling } from './algorithms/fcfs';
-// import { hrrnScheduling } from './algorithms/hrrn';
+import { hrrnScheduling } from './algorithms/hrrn';
 import { rrScheduling } from './algorithms/rr';
 import { sjf } from './algorithms/sjf';
 import { srtf } from './algorithms/srtf';
 import { npp } from './algorithms/npp';
 import { pp } from './algorithms/pp';
-// import { mqf } from './algorithms/mqf';
+import { mqf } from './algorithms/mqf';
 import { calculateAverages } from './utils/calculateAverages';
 import AverageChart from './utils/AverageChart';
 import GanttChart from './utils/GanttChart';
@@ -42,13 +42,13 @@ function App() {
   
       const algorithms = [
         { name: 'FCFS', func: fcfsScheduling },
-        // { name: 'HRRN', func: hrrnScheduling },
+        { name: 'HRRN', func: hrrnScheduling },
         { name: 'RR', func: rrScheduling, requiresQuantum: true },
         { name: 'SJF', func: sjf },
         { name: 'SRTF', func: srtf },
         { name: 'NPP', func: npp, requiresPriority: true },
-        { name: 'PP', func: pp, requiresPriority: true }
-        // { name: 'MQF', func: mqf, requiresQuantum: true }
+        { name: 'PP', func: pp, requiresPriority: true },
+        { name: 'MQF', func: mqf, requiresQuantum: true }
       ];
   
       const newResults = algorithms.map(({ name, func, requiresQuantum, requiresPriority }) => {

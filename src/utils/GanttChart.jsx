@@ -41,7 +41,7 @@ const GanttChart = ({ name, ganttChartInfo, colors }) => {
                 backgroundColor: processColors[job],
               }}
             >
-              P{processNumber}
+              {job}
             </div>
           );
         })}

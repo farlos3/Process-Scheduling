@@ -2,14 +2,8 @@ export const fcfsScheduling = (arrivalTime, burstTime) => {
   // Create an array of processes with job name, arrival time, and burst time.
   const processesInfo = arrivalTime
     .map((item, index) => {
-      // Job name as P1, P2, etc., or alphabetically if less than 26 processes.
-      const job =
-        arrivalTime.length > 26
-          ? `P${index + 1}`
-          : (index + 10).toString(36).toUpperCase();
-
       return {
-        job,
+        job: `P${index + 1}`, // ใช้รูปแบบ P1, P2, P3
         at: item, // Arrival time
         bt: burstTime[index], // Burst time
       };

@@ -1,13 +1,7 @@
 export const pp = (arrivalTime, burstTime, priorities) => {
-  const processesInfo = arrivalTime
-    .map((item, index) => {
-      const job =
-        arrivalTime.length > 26
-          ? `P${index + 1}`
-          : (index + 10).toString(36).toUpperCase();
-
+  const processesInfo = arrivalTime.map((item, index) => {
       return {
-        job,
+        job: `P${index + 1}`,
         at: item,
         bt: burstTime[index],
         priority: priorities[index],

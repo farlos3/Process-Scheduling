@@ -1,24 +1,18 @@
 export const srtf = (arrivalTime, burstTime) => {
-  const processesInfo = arrivalTime
-    .map((item, index) => {
-      const job =
-        arrivalTime.length > 26
-          ? `P${index + 1}`
-          : (index + 10).toString(36).toUpperCase();
-
-      return {
-        job,
-        at: item,
-        bt: burstTime[index],
-      };
-    })
-    .sort((obj1, obj2) => {
-      if (obj1.at > obj2.at) return 1;
-      if (obj1.at < obj2.at) return -1;
-      if (obj1.bt > obj2.bt) return 1;
-      if (obj1.bt < obj2.bt) return -1;
-      return 0;
-    });
+  const processesInfo = arrivalTime.map((item, index) => {
+    return {
+      job: `P${index + 1}`,
+      at: item,
+      bt: burstTime[index],
+    };
+  })
+  .sort((obj1, obj2) => {
+    if (obj1.at > obj2.at) return 1;
+    if (obj1.at < obj2.at) return -1;
+    if (obj1.bt > obj2.bt) return 1;
+    if (obj1.bt < obj2.bt) return -1;
+    return 0;
+  });
 
   const solvedProcessesInfo = [];
   const ganttChartInfo = [];
