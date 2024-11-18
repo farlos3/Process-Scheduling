@@ -48,3 +48,16 @@ The process with the shortest burst time is executed first. If two processes hav
 ```Function: srtf(arrivalTime, burstTime)```<br>
 **Description:** <br>
 A preemptive version of SJF. Processes are dynamically scheduled based on the shortest remaining burst time, allowing preemption when a process with a shorter burst time arrives.
+
+## **How to Clone and Run the Project**
+
+Follow these steps to clone the repository and run the project locally:
+
+### **1. Clone the Repository**
+Run the following command in your terminal to clone the repository:
+```bash
+git clone https://github.com/farlos3/Process-Scheduling.git
+cd Process-Scheduling
+npm install
+npm start
+Open : http://localhost:3000
