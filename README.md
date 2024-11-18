@@ -2,7 +2,7 @@
 
 URL : https://farlos3.github.io/Process-Scheduling/
 
-## Algorithm
+## Algorithm (src/algorithms)
 ### 1. First Come First Serve (FCFS)
 ```Function: fcfsScheduling(arrivalTime, burstTime)```<br>
 **Description:** <br>
