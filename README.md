@@ -4,7 +4,7 @@ URL : https://farlos3.github.io/Process-Scheduling/
 
 ## Algorithm
 ### 1. First Come First Serve (FCFS)
-```Function: fcfsScheduling(arrivalTime, burstTime)```
+```Function: fcfsScheduling(arrivalTime, burstTime)```<br>
 Description:
 Processes are executed in the order of their arrival time. The process that arrives first is processed first, without preemption.
 
