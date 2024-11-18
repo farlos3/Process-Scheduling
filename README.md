@@ -23,6 +23,7 @@ Processes are divided into three queues based on priority or arrival time:
 Queue 1: Executed using Round Robin (RR) with a smaller time quantum (timeQuantum1, default: 3).
 Queue 2: Remaining processes are processed using Round Robin with a larger time quantum (timeQuantum2, default: 6).
 Queue 3: Remaining processes are executed using First Come First Serve (FCFS).
+
 4. Non-Preemptive Priority Scheduling (NPP)
 Function: npp(arrivalTime, burstTime, priority)
 Description:
