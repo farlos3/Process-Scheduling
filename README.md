@@ -56,8 +56,9 @@ Follow these steps to clone the repository and run the project locally:
 ### **1. Clone the Repository**
 Run the following command in your terminal to clone the repository:
 ```bash
-git clone https://github.com/farlos3/Process-Scheduling.git
-cd Process-Scheduling
-npm install
-npm start
-Open : http://localhost:3000
+1. git clone https://github.com/farlos3/Process-Scheduling.git
+2. cd Process-Scheduling
+3. npm install
+4. npm start
+```
+Open : http://localhost:3000 in your browser.
